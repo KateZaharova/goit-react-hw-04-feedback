@@ -1,3 +1,4 @@
+/*
 import { GlobalStyle } from "./GlobalStyle";
 import { Layout } from "./Layout";
 import { Component } from "react";
@@ -14,7 +15,7 @@ export class App extends Component {
     bad: 0
   };
 
-  handleClickBtn = buttonType => {
+ handleClickBtn = buttonType => {
     switch (buttonType) {
       case "good":
         this.setState(prevState => ({
@@ -54,14 +55,18 @@ countTotalFeedback() {
           return num.toFixed(0);
  }
 
+
+
   render() {
     let statisticOption;
-      if (this.countTotalFeedback() === 0) {
-          statisticOption=<Section title={"Statistics"} children={<Notification message="There is no feedback"/>}/>
-        } else {
-          statisticOption=<Section title={"Statistics"} children={<Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={this.countTotalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()} />} />
-    };  
-    return (
+    if (this.countTotalFeedback() === 0) {
+      statisticOption = <Section title={"Statistics"} children={<Notification message="There is no feedback" />} />
+    } else {
+      statisticOption = <Section title={"Statistics"} children={<Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={this.countTotalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()} />} />
+    };
+  }
+  
+  return (
     <Layout
        style={{
         //height: '100vh',
@@ -78,8 +83,4 @@ countTotalFeedback() {
     </Layout>
   );
   }
-  
-};
-
-
-
+  */

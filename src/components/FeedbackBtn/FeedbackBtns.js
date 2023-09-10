@@ -1,71 +1,61 @@
 import {Button} from "../FeedbackBtn/FeedbackBtn.styled";
-import { Component } from "react";
+//import { Component } from "react";
+import { useState } from "react";
 
 
-export class FeedbackBtns extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0
-  };
+export const FeedbackBtns = () => {
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
 
-  handleClickGood = () => {
+
+const handleClickGood = () => {
     console.log("good");
-    this.setState(prevState => ({
-      good: prevState.good += 1,
-    }))
+  setGood(prevState => prevState + 1);
   };
 
-  handleClickNeutral = () => {
+const handleClickNeutral = () => {
     console.log("neutral");
-    this.setState(prevState => ({
-      neutral: prevState.neutral += 1,
-    }))
+    setNeutral(prevState => prevState + 1);
   };
   
-  handleClickBad = () => {
+const handleClickBad = () => {
     console.log("bad");
-    this.setState(prevState => ({
-      bad: prevState.bad += 1,
-    }))
+    setBad(prevState => prevState + 1);
   };
 
-  countTotalFeedback() {
+const countTotalFeedback=()=> {
     let total = 0;
-    let array=[this.state.good,this.state.neutral,this.state.bad]
+    let array=[good, neutral, bad]
     array.forEach(item => {
       total += item;
     }); 
     return total;
   }
     
-  countPositiveFeedbackPercentage() {
-    let num = ((this.state.good / this.countTotalFeedback()) * 100); 
-    if (this.countTotalFeedback() === 0) {
+const countPositiveFeedbackPercentage=()=> {
+    let num = ((good / countTotalFeedback()) * 100); 
+    if (countTotalFeedback() === 0) {
       return 0;
     } else {
       return num.toFixed(0);
     }
   }
-  
+    
 
-  
-
-  render() {
-    return (
+return (
       <div>
         <h2>Please leave feedback</h2>
-        <Button onClick={this.handleClickGood}>Good</Button>
-        <Button onClick={this.handleClickNeutral}>Neutral</Button>
-        <Button onClick={this.handleClickBad}>Bad</Button>
+        <Button onClick={handleClickGood}>Good</Button>
+        <Button onClick={handleClickNeutral}>Neutral</Button>
+        <Button onClick={handleClickBad}>Bad</Button>
 
         <h2>Statistics</h2>
-        <p>Good: {this.state.good}</p>
-        <p>Neutral: {this.state.neutral}</p>
-        <p>Bad: {this.state.bad}</p>
+        <p>Good: {good}</p>
+        <p>Neutral: {neutral}</p>
+        <p>Bad: {bad}</p>
         <p>Total: {this.countTotalFeedback()}</p>
         <p>PositiveFeedback: {this.countPositiveFeedbackPercentage()}%</p>  
       </div>
     )
-  }
 }
