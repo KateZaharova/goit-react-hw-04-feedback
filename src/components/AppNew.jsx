@@ -5,7 +5,7 @@ import { Statistics } from "./Statistics";
 import { FeedbackOptions } from "./FeedbackOptions";
 import { Section } from "./Section";
 import { Notification } from "./Notification";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 
 export const AppNew =() => {
